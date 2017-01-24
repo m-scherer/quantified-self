@@ -14,9 +14,9 @@
   <table>
     <thead>
       <tr>
-          <th data-field="id">Name</th>
-          <th data-field="calories">Calories</th>
-          <th data-field="delete">Delete</th>
+        <th data-field="id">Name</th>
+        <th data-field="calories">Calories</th>
+        <th data-field="delete">Delete</th>
       </tr>
     </thead>
 
@@ -38,6 +38,17 @@
       </tr>
     </tbody>
   </table>
-  <thead>
+
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="food-name" placeholder="Food Name" type="text">
+      <label for="food-name"></label>
+    </div>
+    <div class="input-field col s6">
+      <input id="food-calories" placeholder="Calories" type="text">
+      <label for="last_name"></label>
+    </div>
+  </div>
+  <a class="waves-effect waves-light btn" id="create-food">create food</a>
 </body>
 </html>
