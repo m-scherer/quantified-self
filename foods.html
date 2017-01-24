@@ -5,39 +5,41 @@
   <title>Quantified Self - Manage Foods</title>
 </head>
 <body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="main.bundle.js"></script>
-
+  <div class="container">
+    <input type="text" name="food" value="a" id="food-filter">
+  </div>
   <table>
-    <thead>
-      <tr>
-          <th data-field="id">Name</th>
-          <th data-field="calories">Calories</th>
-          <th data-field="delete">Delete</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>Pizza</td>
-        <td>300</td>
-        <td><a href ="#" class="delete-icon"><i class="small material-icons">delete</i></a> </td>
-      </tr>
-      <tr>
-        <td>Ice Cream</td>
-        <td>200</td>
-        <td><a href ="#" class="delete-icon"><i class="small material-icons">delete</i></a> </td>
-      </tr>
-      <tr>
-        <td>Tacos</td>
-        <td>350</td>
-        <td><a href ="#" class="delete-icon"><i class="small material-icons">delete</i></a> </td>
-      </tr>
-    </tbody>
-  </table>
-  <thead>
+    <div class="container">
+      <thead>
+        <tr>
+            <th data-field="id">Name</th>
+            <th data-field="calories">Calories</th>
+            <th data-field="delete">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pizza</td>
+          <td>300</td>
+          <td><a href ="#" class="delete-icon"><i class="small material-icons">delete</i></a> </td>
+        </tr>
+        <tr>
+          <td>Ice Cream</td>
+          <td>200</td>
+          <td><a href ="#" class="delete-icon"><i class="small material-icons">delete</i></a> </td>
+        </tr>
+        <tr>
+          <td>Tacos</td>
+          <td>350</td>
+          <td><a href ="#" class="delete-icon"><i class="small material-icons">delete</i></a> </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  <script src="main.bundle.js"></script>
 </body>
 </html>
