@@ -10,15 +10,29 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="main.bundle.js"></script>
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="exercise-name" placeholder="Exercise Name" type="text">
+      <label for="exercise-name"></label>
+    </div>
+    <div class="input-field col s6">
+      <input id="exercise-calories" placeholder="Calories" type="text">
+      <label for="exercise-calories"></label>
+    </div>
+  </div>
+  <a class="waves-effect waves-light btn" id="create-exercise">Add Exercise</a>
+  <p id="exercise-message"></p>
+
+  <input type="text" name="food" placeholder="Exercise Name" id="exercise-filter">
   <table>
     <thead>
       <tr>
-          <th data-field="id">Name</th>
-          <th data-field="calories">Calories</th>
-          <th data-field="delete">Delete</th>
+        <th data-field="id">Name</th>
+        <th data-field="calories">Calories</th>
+        <th data-field="delete">Delete</th>
       </tr>
+      <tbody id="table-body"></tbody>
     </thead>
-    <tbody id="table-body"></tbody>
   </table>
 </body>
 </html>
