@@ -34,28 +34,40 @@ test.describe('testing food', function() {
     calories.getAttribute('value').then(function(value) {
       assert.equal(value, 'this is a new calorie amount');
     });
-
   });
 
-  test.xit('should allow me to create an new food', function() {
+  test.it('should allow me to create a new food', function() {
 
-    driver.get('http://localhost:8080/webpack-dev-server/foods.html');
+    driver.get('http://localhost:8080/foods.html');
 
     var name = driver.findElement({id: 'food-name'});
     var calories = driver.findElement({id: 'food-calories'});
-    var submitButton = driver.findElement({id: 'create-food'});
 
-    name.sendKeys('this is a new food name');
-    calories.sendKeys('this is a new calorie amount');
-    submitButton.click();
-
-    driver.sleep(1000);
+    name.sendKeys('new');
+    calories.sendKeys('1');
+    driver.findElement({id: 'create-food'}).click();
 
     driver.findElement({id: 'table-body'}).getText().then(function(textValue) {
-      assert.include(textValue, "this is a new food name");
+      assert.include(textValue, "new");
     });
 
-    driver.findElement({id: 'delete-food'}).click();
+  })
+
+  test.it('should allow me to delete a food', function() {
+
+    driver.get('http://localhost:8080/foods.html');
+
+    var name = driver.findElement({id: 'food-name'});
+    var calories = driver.findElement({id: 'food-calories'});
+
+    name.sendKeys('new');
+    calories.sendKeys('1');
+    driver.findElement({id: 'create-food'}).click();
+    driver.findElement({className: 'delete-icon'}).click();
+
+    driver.executeScript("localStorage.getItem('food')").then(function(food) {
+      assert.equal(food, null);
+    });
 
   })
 
