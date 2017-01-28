@@ -7,15 +7,13 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <script src="main.bundle.js"></script>
-
-<p id="diary-date"></p>
-
+<h5 id="diary-date"></h5>
 <script>
 document.getElementById("diary-date").innerHTML = Date();
 </script>
 <table>
-  Breakfast
   <thead>
+    <h6>Breakfast</h6>
     <tr>
       <th data-field="id">Name</th>
       <th data-field="calories">Calories</th>
@@ -25,9 +23,21 @@ document.getElementById("diary-date").innerHTML = Date();
   </thead>
 </table>
 
+<table>
+  <thead>
+    <h6>Lunch</h6>
+    <tr>
+      <th data-field="id">Name</th>
+      <th data-field="calories">Calories</th>
+      <th data-field="delete">Delete</th>
+    </tr>
+    <tbody class="table-body" id="lunch"></tbody>
+  </thead>
+</table>
+
 <div class="center-align">
   <a class="waves-effect waves-light btn" id="breakfast-button">Add to Breakfast</a>
-  <a class="waves-effect waves-light btn">Add to Lunch</a>
+  <a class="waves-effect waves-light btn" id="lunch-button">Add to Lunch</a>
   <a class="waves-effect waves-light btn">Add to Dinner</a>
   <a class="waves-effect waves-light btn">Add to Snacks</a>
 </div>
