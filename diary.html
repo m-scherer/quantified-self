@@ -13,9 +13,20 @@
 <script>
 document.getElementById("diary-date").innerHTML = Date();
 </script>
+<table>
+  Breakfast
+  <thead>
+    <tr>
+      <th data-field="id">Name</th>
+      <th data-field="calories">Calories</th>
+      <th data-field="delete">Delete</th>
+    </tr>
+    <tbody class="table-body" id="breakfast"></tbody>
+  </thead>
+</table>
 
 <div class="center-align">
-  <a class="waves-effect waves-light btn">Add to Breakfast</a>
+  <a class="waves-effect waves-light btn" id="breakfast-button">Add to Breakfast</a>
   <a class="waves-effect waves-light btn">Add to Lunch</a>
   <a class="waves-effect waves-light btn">Add to Dinner</a>
   <a class="waves-effect waves-light btn">Add to Snacks</a>
