@@ -1,4 +1,13 @@
+h6{
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid grey;
+}
 
+.container {
+  margin-left: 100px;
+  width: 80%;
+}
 /*h4 {
   text-align: center;
 }
