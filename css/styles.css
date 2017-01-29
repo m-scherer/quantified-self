@@ -2,11 +2,21 @@ h6{
   text-align: center;
   font-weight: bold;
   border-bottom: 1px solid grey;
+  color: #f15858;
+}
+
+#diary-date {
+  text-align: center;
+  color: #7c4199;
 }
 
 .container {
   margin-left: 100px;
   width: 80%;
+}
+
+p {
+  color: red;
 }
 /*h4 {
   text-align: center;

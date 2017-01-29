@@ -9,7 +9,7 @@
   <script src="main.bundle.js"></script>
   <h5 id="diary-date"></h5>
   <script>
-  document.getElementById("diary-date").innerHTML = Date();
+  document.getElementById("diary-date").innerHTML = Date().slice(0,16);
   </script>
   <div class="row">
     <div class="col s6">
@@ -54,7 +54,7 @@
         </thead>
       </table>
     </div>
-    <!-- <div class="col s6">
+    <div class="col s6">
       <table>
         <thead>
           <h6>Snacks</h6>
@@ -63,17 +63,17 @@
             <th data-field="calories">Calories</th>
             <th data-field="delete">Delete</th>
           </tr>
-          <tbody class="table-body" id="snacks" ></tbody>
+          <tbody class="table-body" id="snack"></tbody>
         </thead>
       </table>
-    </div> -->
+    </div>
   </div>
 
   <div class="center-align">
     <a class="waves-effect waves-light btn" id="breakfast-button">Add to Breakfast</a>
     <a class="waves-effect waves-light btn" id="lunch-button">Add to Lunch</a>
     <a class="waves-effect waves-light btn" id="dinner-button">Add to Dinner</a>
-    <a class="waves-effect waves-light btn">Add to Snacks</a>
+    <a class="waves-effect waves-light btn" id="snack-button">Add to Snacks</a>
   </div>
 
   <div class="container">
