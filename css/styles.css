@@ -25,6 +25,14 @@ p {
   width: 800px;
   height: auto;
 }
+.green-text {
+  color: green;
+}
+
+.red-text {
+  color: red;
+}
+
 /*h4 {
   text-align: center;
 }

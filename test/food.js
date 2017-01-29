@@ -46,7 +46,7 @@ test.describe('testing food', function() {
     name.sendKeys('new');
     calories.sendKeys('1');
     driver.findElement({id: 'create-food'}).click();
-
+driver.sleep(1000000)
     driver.findElement({id: 'table-body'}).getText().then(function(textValue) {
       assert.include(textValue, "new");
     });
