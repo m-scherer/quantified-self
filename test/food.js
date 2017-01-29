@@ -102,6 +102,7 @@ test.describe('testing food', function() {
   })
 
   test.xit('clears input fields and warning messages after food is created', function(){
+    
     driver.get('http://localhost:8080/foods.html');
 
     var foodName = driver.findElement({id: 'food-name'});
