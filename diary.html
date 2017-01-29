@@ -1,12 +1,94 @@
 <!DOCTYPE html>
 <html>
 <body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="main.bundle.js"></script>
+  <h5 id="diary-date"></h5>
+  <script>
+  document.getElementById("diary-date").innerHTML = Date().slice(0,16);
+  </script>
+  <div class="row">
+    <div class="col s6">
+      <table>
+        <thead>
+          <h6>Breakfast</h6>
+          <tr>
+            <th data-field="id">Name</th>
+            <th data-field="calories">Calories</th>
+            <th data-field="delete">Delete</th>
+          </tr>
+          <tbody class="table-body" id="breakfast"></tbody>
+        </thead>
+      </table>
+    </div>
+    <div class="col s6">
+      <table>
+        <thead>
+          <h6>Lunch</h6>
+          <tr>
+            <th data-field="id">Name</th>
+            <th data-field="calories">Calories</th>
+            <th data-field="delete">Delete</th>
+          </tr>
+          <tbody class="table-body" id="lunch" ></tbody>
+        </thead>
+      </table>
+    </div>
+  </div>
 
-<p id="diary-date"></p>
+  <div class="row">
+    <div class="col s6">
+      <table>
+        <thead>
+          <h6>Dinner</h6>
+          <tr>
+            <th data-field="id">Name</th>
+            <th data-field="calories">Calories</th>
+            <th data-field="delete">Delete</th>
+          </tr>
+          <tbody class="table-body" id="dinner"></tbody>
+        </thead>
+      </table>
+    </div>
+    <div class="col s6">
+      <table>
+        <thead>
+          <h6>Snacks</h6>
+          <tr>
+            <th data-field="id">Name</th>
+            <th data-field="calories">Calories</th>
+            <th data-field="delete">Delete</th>
+          </tr>
+          <tbody class="table-body" id="snack"></tbody>
+        </thead>
+      </table>
+    </div>
+  </div>
 
-<script>
-document.getElementById("diary-date").innerHTML = Date();
-</script>
+  <div class="center-align">
+    <a class="waves-effect waves-light btn" id="breakfast-button">Add to Breakfast</a>
+    <a class="waves-effect waves-light btn" id="lunch-button">Add to Lunch</a>
+    <a class="waves-effect waves-light btn" id="dinner-button">Add to Dinner</a>
+    <a class="waves-effect waves-light btn" id="snack-button">Add to Snacks</a>
+  </div>
 
+  <div class="container">
+    <input type="text" name="food" placeholder="Food Name" id="food-filter">
+    <table>
+      <thead>
+        <tr>
+          <th data-field="select">Select</th>
+          <th data-field="id">Name</th>
+          <th data-field="calories">Calories</th>
+          <th data-field="delete">Delete</th>
+        </tr>
+        <tbody class="table-body diary" id="foods" style="background-color:#C0C0C0"></tbody>
+      </thead>
+    </table>
+  </div>
 </body>
 </html>
