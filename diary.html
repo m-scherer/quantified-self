@@ -63,18 +63,55 @@
             <th data-field="calories">Calories</th>
             <th data-field="delete">Delete</th>
           </tr>
-          <tbody class="table-body" id="snack"></tbody>
         </thead>
+          <tbody class="table-body" id="snack"></tbody>
       </table>
     </div>
+    <div class="row" id="my-exercises">
+      <div class="center-align" >
+        <table>
+          <thead>
+            <h6>Exercises</h6>
+            <tr>
+              <th data-field="id">Name</th>
+              <th data-field="calories">Calories</th>
+              <th data-field="delete">Delete</th>
+            </tr>
+          </thead>
+          <tbody class="table-body" id="exercises-diary"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="buttons">
+    <div class="center-align">
+      <a class="waves-effect waves-light btn" id="exercise-button">Add Selected</a>
+      <a class="waves-effect waves-light btn" id="add-exercise-button">Add to Lunch</a>
+    </div>
+  </div>
+  <div class="container">
+    <input type="text" name="exercise" placeholder="Exercise Name" id="exercise-filter">
+    <table>
+      <thead>
+        <tr>
+          <th data-field="select">Select</th>
+          <th data-field="id">Name</th>
+          <th data-field="calories">Calories</th>
+          <th data-field="delete">Delete</th>
+        </tr>
+        <tbody class="table-body diary" id="exercises" style="background-color:#C0C0C0"></tbody>
+      </thead>
+    </table>
   </div>
 
+<div class="container" id="buttons">
   <div class="center-align">
     <a class="waves-effect waves-light btn" id="breakfast-button">Add to Breakfast</a>
     <a class="waves-effect waves-light btn" id="lunch-button">Add to Lunch</a>
     <a class="waves-effect waves-light btn" id="dinner-button">Add to Dinner</a>
     <a class="waves-effect waves-light btn" id="snack-button">Add to Snacks</a>
   </div>
+</div>
 
   <div class="container">
     <input type="text" name="food" placeholder="Food Name" id="food-filter">
@@ -89,6 +126,7 @@
         <tbody class="table-body diary" id="foods" style="background-color:#C0C0C0"></tbody>
       </thead>
     </table>
+
   </div>
 </body>
 </html>

@@ -18,6 +18,13 @@ h6{
 p {
   color: red;
 }
+#buttons {
+  margin-top: 30px;
+}
+#my-exercises {
+  width: 800px;
+  height: auto;
+}
 /*h4 {
   text-align: center;
 }
