@@ -13,9 +13,9 @@
   </script>
   <div class="row">
     <div class="col s6">
+      <h6>Breakfast</h6>
       <table>
         <thead>
-          <h6>Breakfast</h6>
           <tr>
             <th data-field="id">Name</th>
             <th data-field="calories">Calories</th>
@@ -26,9 +26,9 @@
       </table>
     </div>
     <div class="col s6">
+      <h6>Lunch</h6>
       <table>
         <thead>
-          <h6>Lunch</h6>
           <tr>
             <th data-field="id">Name</th>
             <th data-field="calories">Calories</th>
@@ -42,9 +42,9 @@
 
   <div class="row">
     <div class="col s6">
+      <h6>Dinner</h6>
       <table>
         <thead>
-          <h6>Dinner</h6>
           <tr>
             <th data-field="id">Name</th>
             <th data-field="calories">Calories</th>
@@ -55,9 +55,9 @@
       </table>
     </div>
     <div class="col s6">
+      <h6>Snacks</h6>
       <table>
         <thead>
-          <h6>Snacks</h6>
           <tr>
             <th data-field="id">Name</th>
             <th data-field="calories">Calories</th>
@@ -67,11 +67,12 @@
           <tbody class="table-body" id="snack"></tbody>
       </table>
     </div>
-    <div class="row" id="exercises-diary">
+  </div>
+    <div class="row single-table">
       <div class="center-align" >
+        <h6>Exercises</h6>
         <table>
           <thead>
-            <h6>Exercises</h6>
             <tr>
               <th data-field="id">Name</th>
               <th data-field="calories">Calories</th>
@@ -82,7 +83,31 @@
         </table>
       </div>
     </div>
-  </div>
+    <div class="row single-table">
+      <div class="center-align" >
+        <h6>Totals</h6>
+        <table>
+          <tbody class="table-body" id="totals">
+            <tr>
+              <td>Goal Calories</td>
+              <td class='data' id="calories-goal">2000</td>
+            </tr>
+            <tr>
+              <td>Calories Consumed</td>
+              <td class='data' id="calories-consumed"></td>
+            </tr>
+            <tr>
+              <td>Calories Burned</td>
+              <td class='data' id="calories-burned"></td>
+            </tr>
+            <tr>
+              <td>Remaining Calories</td>
+              <td class='data' id="calories-remaining"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   <div class="container" id="buttons">
     <div class="center-align">
       <a class="waves-effect waves-light btn" id="exercise-button">Add Selected</a>
