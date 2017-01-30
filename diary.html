@@ -7,10 +7,17 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <script src="main.bundle.js"></script>
-  <h5 id="diary-date"></h5>
-  <script>
-  document.getElementById("diary-date").innerHTML = Date().slice(0,16);
-  </script>
+  <div class="row">
+    <div class="col s4">
+      <a class="waves-effect waves-light btn" id="yesterday"><</a>
+    </div>
+    <div class="col s4">
+      <h5 id="today"></h5>
+    </div>
+    <div class="col s4">
+      <a class="waves-effect waves-light btn" id="tomorrow">></a>
+    </div>
+  </div>
   <div class="row">
     <div class="col s6">
       <h6>Breakfast</h6>
