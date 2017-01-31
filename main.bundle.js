@@ -319,7 +319,7 @@
 	    return dinner.getDinner();
 	  } else if (tableBody.id == "snack") {
 	    return snack.getSnack();
-	  } else if (tableBody.id == "my-exercises") {
+	  } else if (tableBody.id == "myexercises") {
 	    return myExercises.getMyExercises();
 	  }
 	};
