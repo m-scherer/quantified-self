@@ -25,21 +25,24 @@
       <label for="food-calories"></label>
     </div>
   </div>
-  <a class="waves-effect waves-light btn" id="create-food">Add Food</a>
+  <div style="text-align:center"><a class="waves-effect waves-light btn" id="create-food">Add Food</a></div>
   <p id="message"></p>
 
-  <input type="text" name="food" placeholder="Food Name" id="food-filter">
+  <input type="text" name="food" placeholder="Filter by Food Name" id="food-filter">
   <table>
     <thead>
       <tr>
         <th data-field="id">Name</th>
-        <th data-field="calories">Calories</th>
+        <th data-field="calories" id="calories-header">Calories</th>
         <th data-field="delete">Delete</th>
       </tr>
       <tbody class="table-body" id="foods"></tbody>
     </thead>
   </table>
   <br>
-  <a href="exercises.html">Manage Exercises</a>
+  <div class style="text-align:center">
+  <a href="exercises.html" class="waves-effect waves-light btn purple">Manage Exercises</a>
+  <a href="index.html" class="waves-effect waves-light btn pink"> Daily Diary</a>
+</div>
 </body>
 </html>

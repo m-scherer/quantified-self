@@ -1,10 +1,207 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Quantified Self - Diary</title>
-</head>
 <body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
   <script src="main.bundle.js"></script>
+  <div class="row">
+    <div class="col s4">
+      <a class="waves-effect waves-light btn" id="yesterday"><</a>
+    </div>
+    <div class="col s4">
+      <h5 id="today"></h5>
+    </div>
+    <div class="col s4">
+      <a class="waves-effect waves-light btn right" id="tomorrow">></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6">
+      <h6>Breakfast</h6>
+      <table class="highlight">
+        <thead style="background-color:#D3D3D3">
+          <tr>
+            <th data-field="id">Name</th>
+            <th data-field="calories">Calories</th>
+            <th data-field="delete">Delete</th>
+          </tr>
+          <tbody class="table-body" id="breakfast"></tbody>
+        </thead>
+        <tr>
+        <th data-field=""> </th>
+        <th data-field=""> Total Calories</th>
+        <td class="data" id="breakfast-total-calories"></td>
+      </tr>
+      <tr>
+        <th data-field=""> </th>
+        <th data-field=""> Remaining Calories</th>
+        <td class="data" id="breakfast-remaining-calories"></td>
+      </table>
+    </div>
+    <div class="col s6">
+      <h6>Lunch</h6>
+      <table class="highlight">
+        <thead style="background-color:#D3D3D3">
+          <tr>
+            <th data-field="id">Name</th>
+            <th data-field="calories">Calories</th>
+            <th data-field="delete">Delete</th>
+          </tr>
+          <tbody class="table-body" id="lunch" ></tbody>
+        </thead>
+        <tr>
+        <th data-field=""> </th>
+        <th data-field=""> Total Calories</th>
+        <td class="data" id="lunch-total-calories"></td>
+      </tr>
+      <tr>
+        <th data-field=""> </th>
+        <th data-field=""> Remaining Calories</th>
+        <td class="data" id="lunch-remaining-calories"></td>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s6">
+      <h6>Dinner</h6>
+      <table class="highlight">
+        <thead style="background-color:#D3D3D3">
+          <tr>
+            <th data-field="id">Name</th>
+            <th data-field="calories">Calories</th>
+            <th data-field="delete">Delete</th>
+          </tr>
+          <tbody class="table-body" id="dinner"></tbody>
+        </thead>
+        <tr>
+        <th data-field=""> </th>
+        <th data-field=""> Total Calories</th>
+        <td class="data" id="dinner-total-calories"></td>
+      </tr>
+      <tr>
+        <th data-field=""> </th>
+        <th data-field=""> Remaining Calories</th>
+        <td class="data" id="dinner-remaining-calories"></td>
+      </table>
+    </div>
+    <div class="col s6">
+      <h6>Snacks</h6>
+      <table class="highlight">
+        <thead style="background-color:#D3D3D3">
+          <tr>
+            <th data-field="id">Name</th>
+            <th data-field="calories">Calories</th>
+            <th data-field="delete">Delete</th>
+          </tr>
+          <tbody class="table-body" id="snack"></tbody>
+        </thead>
+        <tr>
+        <th data-field=""> </th>
+        <th data-field=""> Total Calories</th>
+        <td class="data" id="snack-total-calories"></td>
+      </tr>
+      <tr>
+        <th data-field=""> </th>
+        <th data-field=""> Remaining Calories</th>
+        <td class="data" id="snack-remaining-calories"></td>
+      </table>
+    </div>
+  </div>
+    <div class="row single-table">
+      <div class="center-align" >
+        <h6>Exercises</h6>
+        <table class="highlight">
+          <thead style="background-color:#D3D3D3">
+            <tr>
+              <th data-field="id">Name</th>
+              <th data-field="calories">Calories</th>
+              <th data-field="delete">Delete</th>
+            </tr>
+            <tbody class="table-body" id="exercise"></tbody>
+          </thead>
+          <tr>
+          <th data-field=""> </th>
+          <th data-field=""> Total Calories Burned</th>
+          <td class="data" id="exercise-total-calories"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row single-table">
+      <div class="center-align" >
+        <h6>TOTALS</h6>
+        <table class="highlight">
+          <tbody id="totals">
+            <tr>
+              <td>Goal Calories</td>
+              <td class='data' id="calories-goal">2000</td>
+            </tr>
+            <tr>
+              <td>Calories Consumed</td>
+              <td class='data' id="calories-consumed"></td>
+            </tr>
+            <tr>
+              <td>Calories Burned</td>
+              <td class='data' id="calories-burned"></td>
+            </tr>
+            <tr>
+              <td>Remaining Calories</td>
+              <td class='data' id="calories-remaining"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <div class="container" id="buttons">
+    <div class="center-align">
+      <a class="waves-effect waves-light btn" id="exercise-button">Add Selected</a>
+      <a href="exercises.html" class="waves-effect waves-light btn purple">Add new exercise</a>
+    </div>
+  </div>
+  <div class="container">
+    <input type="text" name="exercise" placeholder="Filter by Exercise Name" id="exercise-filter">
+    <table class="striped">
+      <thead style="background-color:#C0C0C0">
+        <tr>
+          <th data-field="select">Select</th>
+          <th data-field="id">Name</th>
+          <th data-field="calories">Calories</th>
+          <th data-field="delete">Delete</th>
+        </tr>
+        <tbody class="table-body diary" id="exercises"></tbody>
+      </thead>
+    </table>
+  </div>
+
+<div class="container" id="buttons">
+  <div class="center-align">
+    <a class="waves-effect waves-light btn" id="breakfast-button">Add to Breakfast</a>
+    <a class="waves-effect waves-light btn" id="lunch-button">Add to Lunch</a>
+    <a class="waves-effect waves-light btn" id="dinner-button">Add to Dinner</a>
+    <a class="waves-effect waves-light btn" id="snack-button">Add to Snacks</a>
+    <p><a href="foods.html" class="waves-effect waves-light btn purple">Add new food</a></p>
+
+  </div>
+</div>
+
+  <div class="container">
+    <input type="text" name="food" placeholder="Filter by Food Name" id="food-filter">
+    <table class="striped">
+      <thead style="background-color:#C0C0C0">
+        <tr>
+          <th data-field="select">Select</th>
+          <th data-field="id">Name</th>
+          <th data-field="calories">Calories</th>
+          <th data-field="delete">Delete</th>
+        </tr>
+        <tbody class="table-body diary" id="foods"></tbody>
+      </thead>
+    </table>
+
+  </div>
 </body>
 </html>
