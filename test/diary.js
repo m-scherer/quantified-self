@@ -16,8 +16,7 @@ test.describe('testing diary', function() {
     driver.quit();
   })
 
-  test.xit('adds a selected food to table', function(){
-//cant find selector
+  test.it('adds a selected food to table', function(){
     driver.get('http://localhost:8080/foods.html');
 
     var foodName = driver.findElement({id: 'food-name'});
@@ -30,12 +29,236 @@ test.describe('testing diary', function() {
 
     driver.get('http://localhost:8080/diary.html');
 
-    var foodsCheckBox = driver.findElement({css: '#foods #table-body tbody tr td:nth-of-type(1)'}).click();
-    var addToLunchButton = driver.findElement({css: '#lunch-button'})
+    driver.findElement({css: 'label[for=pizza]'}).click();
+    driver.findElement({id: 'lunch-button'}).click()
 
-    addToLunchButton.click();
-    driver.findElement({css: '#lunch tr:nth-child(1) td:nth-child(1)'}).getText().then(function(textValue){
-      assert.equal(textValue, 'pizza')
+    driver.findElement({id: 'lunch'}).getText().then(function(textValue) {
+      assert.include(textValue, "pizza");
     });
   });
-})
+
+  test.it('has totals', function() {
+    driver.get('http://localhost:8080/diary.html');
+    var calories = driver.findElement({id: 'calories-goal'}).getText().then(function(textValue) {
+      assert.equal(textValue, 2000);
+    });
+  });
+
+  test.it('adds calories consumed', function() {
+    driver.get('http://localhost:8080/foods.html');
+
+    var foodName = driver.findElement({id: 'food-name'});
+    var foodCalories = driver.findElement({id: 'food-calories'});
+    var submitButton = driver.findElement({id: 'create-food'});
+
+    foodName.sendKeys('pizza');
+    foodCalories.sendKeys('500');
+    submitButton.click();
+
+    driver.get('http://localhost:8080/diary.html');
+
+    driver.findElement({css: 'label[for=pizza]'}).click();
+    driver.findElement({id: 'lunch-button'}).click()
+
+    driver.findElement({id: 'calories-consumed'}).getText().then(function(textValue) {
+      assert.equal(textValue, 500);
+    });
+  });
+
+  test.it('adds calories burned', function() {
+    driver.get('http://localhost:8080/exercises.html');
+
+    var exerciseName = driver.findElement({id: 'exercise-name'});
+    var exerciseCalories = driver.findElement({id: 'exercise-calories'});
+    var submitButton = driver.findElement({id: 'create-exercise'});
+
+    exerciseName.sendKeys('Run');
+    exerciseCalories.sendKeys('500');
+    submitButton.click();
+
+    driver.get('http://localhost:8080/diary.html');
+
+    driver.findElement({css: 'label[for=Run]'}).click();
+    driver.findElement({id: 'exercise-button'}).click()
+
+    driver.findElement({id: 'calories-burned'}).getText().then(function(textValue) {
+      assert.equal(textValue, 500);
+    });
+  });
+
+  test.it('positive calories burned are green', function() {
+    driver.get('http://localhost:8080/exercises.html');
+
+    var exerciseName = driver.findElement({id: 'exercise-name'});
+    var exerciseCalories = driver.findElement({id: 'exercise-calories'});
+    var submitButton = driver.findElement({id: 'create-exercise'});
+
+    exerciseName.sendKeys('Run');
+    exerciseCalories.sendKeys('500');
+    submitButton.click();
+
+    driver.get('http://localhost:8080/diary.html');
+
+    driver.findElement({css: 'label[for=Run]'}).click();
+    driver.findElement({id: 'exercise-button'}).click()
+
+    driver.findElement({id: 'calories-burned'}).getAttribute('class').then(function(textValue) {
+      assert.equal(textValue, 'data green-text');
+    });
+  });
+
+  test.it('changes calories remaining', function() {
+    driver.get('http://localhost:8080/foods.html');
+
+    var foodName = driver.findElement({id: 'food-name'});
+    var foodCalories = driver.findElement({id: 'food-calories'});
+    var submitButton = driver.findElement({id: 'create-food'});
+
+    foodName.sendKeys('pizza');
+    foodCalories.sendKeys('500');
+    submitButton.click();
+
+    driver.get('http://localhost:8080/diary.html');
+
+    driver.findElement({css: 'label[for=pizza]'}).click();
+    driver.findElement({id: 'lunch-button'}).click()
+
+    driver.findElement({id: 'calories-remaining'}).getText().then(function(textValue) {
+      assert.equal(textValue, 1500);
+    });
+  });
+
+  test.it('positive remaining calories are green', function() {
+    driver.get('http://localhost:8080/exercises.html');
+
+    var exerciseName = driver.findElement({id: 'exercise-name'});
+    var exerciseCalories = driver.findElement({id: 'exercise-calories'});
+    var submitButton = driver.findElement({id: 'create-exercise'});
+
+    exerciseName.sendKeys('Run');
+    exerciseCalories.sendKeys('500');
+    submitButton.click();
+
+    driver.get('http://localhost:8080/diary.html');
+
+    driver.findElement({css: 'label[for=Run]'}).click();
+    driver.findElement({id: 'exercise-button'}).click()
+
+    driver.findElement({id: 'calories-remaining'}).getAttribute('class').then(function(textValue) {
+      assert.equal(textValue, 'data green-text');
+    });
+  });
+
+  test.it('remaining calories are green when 0', function() {
+    driver.get('http://localhost:8080/foods.html');
+
+    var foodName = driver.findElement({id: 'food-name'});
+    var foodCalories = driver.findElement({id: 'food-calories'});
+    var submitButton = driver.findElement({id: 'create-food'});
+
+    foodName.sendKeys('pizza');
+    foodCalories.sendKeys('2000');
+    submitButton.click();
+
+    driver.get('http://localhost:8080/diary.html');
+
+    driver.findElement({css: 'label[for=pizza]'}).click();
+    driver.findElement({id: 'lunch-button'}).click()
+
+    driver.findElement({id: 'calories-remaining'}).getAttribute('class').then(function(textValue) {
+      assert.equal(textValue, 'data green-text');
+    });
+  });
+
+  test.it('negative remaining calories are red', function() {
+    driver.get('http://localhost:8080/foods.html');
+
+    var foodName = driver.findElement({id: 'food-name'});
+    var foodCalories = driver.findElement({id: 'food-calories'});
+    var submitButton = driver.findElement({id: 'create-food'});
+
+    foodName.sendKeys('pizza');
+    foodCalories.sendKeys('2500');
+    submitButton.click();
+
+    driver.get('http://localhost:8080/diary.html');
+
+    driver.findElement({css: 'label[for=pizza]'}).click();
+    driver.findElement({id: 'lunch-button'}).click()
+
+    driver.findElement({id: 'calories-remaining'}).getAttribute('class').then(function(textValue) {
+      assert.equal(textValue, 'data red-text');
+    });
+  });
+
+  test.it('can get yesterday', function() {
+    driver.get('http://localhost:8080/diary.html');
+
+    driver.findElement({id: 'today'}).getText().then(function(today) {
+      driver.findElement({id: 'yesterday'}).click();
+      driver.findElement({id: 'today'}).getText().then(function(yesterday) {
+        assert.notEqual(yesterday, today);
+      });
+    });
+  });
+
+  test.it('can get tomorrow', function() {
+    driver.get('http://localhost:8080/diary.html');
+
+    driver.findElement({id: 'today'}).getText().then(function(today) {
+      driver.findElement({id: 'tomorrow'}).click();
+      driver.findElement({id: 'today'}).getText().then(function(tomorrow) {
+        assert.notEqual(today, tomorrow);
+      });
+    });
+  });
+
+  test.it('can persist todays data', function() {
+    driver.get('http://localhost:8080/exercises.html');
+
+    var exerciseName = driver.findElement({id: 'exercise-name'});
+    var exerciseCalories = driver.findElement({id: 'exercise-calories'});
+    var submitButton = driver.findElement({id: 'create-exercise'});
+
+    exerciseName.sendKeys('Run');
+    exerciseCalories.sendKeys('500');
+    submitButton.click();
+
+    driver.get('http://localhost:8080/diary.html');
+
+    driver.findElement({css: 'label[for=Run]'}).click();
+    driver.findElement({id: 'exercise-button'}).click();
+
+    driver.findElement({id: 'yesterday'}).click();
+    driver.findElement({id: 'tomorrow'}).click();
+
+      driver.findElement({id: 'exercise'}).getText().then(function(text) {
+        assert.include(text, 'Run');
+      });
+    });
+
+    test.it('can persist yesterdays data', function() {
+      driver.get('http://localhost:8080/exercises.html');
+
+      var exerciseName = driver.findElement({id: 'exercise-name'});
+      var exerciseCalories = driver.findElement({id: 'exercise-calories'});
+      var submitButton = driver.findElement({id: 'create-exercise'});
+
+      exerciseName.sendKeys('Run');
+      exerciseCalories.sendKeys('500');
+      submitButton.click();
+
+      driver.get('http://localhost:8080/diary.html');
+
+      driver.findElement({id: 'yesterday'}).click();
+      driver.findElement({css: 'label[for=Run]'}).click();
+      driver.findElement({id: 'exercise-button'}).click();
+      driver.findElement({id: 'tomorrow'}).click();
+      driver.findElement({id: 'yesterday'}).click();
+
+        driver.findElement({id: 'exercise'}).getText().then(function(text) {
+          assert.include(text, 'Run');
+        });
+      });
+
+});
