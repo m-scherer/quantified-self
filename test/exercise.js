@@ -17,7 +17,7 @@ test.describe('testing exercise', function() {
     driver.quit();
   })
 
-  test.xit('should allow me to fill in new exercise fields', function() {
+  test.it('should allow me to fill in new exercise fields', function() {
 
     driver.get('http://localhost:8080/exercises.html');
 
@@ -36,7 +36,7 @@ test.describe('testing exercise', function() {
     });
   });
 
-  test.xit('should allow me to create a new exercise', function() {
+  test.it('should allow me to create a new exercise', function() {
 
     driver.get('http://localhost:8080/exercises.html');
 
@@ -52,7 +52,7 @@ test.describe('testing exercise', function() {
     });
   })
 
-  test.xit('should allow me to delete an exercise', function() {
+  test.it('should allow me to delete an exercise', function() {
 
     driver.get('http://localhost:8080/exercises.html');
 
@@ -62,6 +62,9 @@ test.describe('testing exercise', function() {
     exerciseName.sendKeys('new exercise');
     exerciseCalories.sendKeys('100');
     driver.findElement({id: 'create-exercise'}).click();
+    driver.findElement({id: 'exercises'}).getText().then(function(textValue) {
+      assert.include(textValue, "new exercise");
+    });
     driver.findElement({className: 'delete-icon'}).click();
 
     driver.executeScript("localStorage.getItem('exercise')").then(function(exercise) {
@@ -69,7 +72,7 @@ test.describe('testing exercise', function() {
     });
   })
 
-  test.xit('requires a name for adding an exercise', function(){
+  test.it('requires a name for adding an exercise', function(){
 
     driver.get('http://localhost:8080/exercises.html');
 
@@ -85,7 +88,7 @@ test.describe('testing exercise', function() {
     });
  })
 
-  test.xit('requires a calorie amount for adding a new exercise', function(){
+  test.it('requires a calorie amount for adding a new exercise', function(){
 
     driver.get('http://localhost:8080/exercises.html');
 
@@ -101,7 +104,7 @@ test.describe('testing exercise', function() {
     });
   })
 
-  test.xit('clears input fields and warning messages after exercise is created', function(){
+  test.it('clears input fields and warning messages after exercise is created', function(){
 
     driver.get('http://localhost:8080/exercises.html');
 
@@ -133,7 +136,7 @@ test.describe('testing exercise', function() {
     });
   })
 
-  test.xit('should persist exercises when browser refreshes', function(){
+  test.it('should persist exercises when browser refreshes', function(){
 
     driver.get('http://localhost:8080/exercises.html');
 
