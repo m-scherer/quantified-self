@@ -17,7 +17,7 @@ test.describe('testing food', function() {
     driver.quit();
   })
 
-  test.xit('should allow me to fill in new food fields', function() {
+  test.it('should allow me to fill in new food fields', function() {
 
     driver.get('http://localhost:8080/foods.html');
 
@@ -36,7 +36,7 @@ test.describe('testing food', function() {
     });
   });
 
-  test.xit('should allow me to create a new food', function() {
+  test.it('should allow me to create a new food', function() {
 
     driver.get('http://localhost:8080/foods.html');
 
@@ -52,7 +52,7 @@ test.describe('testing food', function() {
     });
   })
 
-  test.xit('should allow me to delete a food', function() {
+  test.it('should allow me to delete a food', function() {
 
     driver.get('http://localhost:8080/foods.html');
 
@@ -62,6 +62,9 @@ test.describe('testing food', function() {
     name.sendKeys('new');
     calories.sendKeys('1');
     driver.findElement({id: 'create-food'}).click();
+    driver.findElement({id: 'foods'}).getText().then(function(textValue) {
+      assert.include(textValue, "new");
+    });
     driver.findElement({className: 'delete-icon'}).click();
 
     driver.executeScript("localStorage.getItem('food')").then(function(food) {
@@ -69,7 +72,7 @@ test.describe('testing food', function() {
     });
   })
 
-  test.xit('requires a name for adding a food', function(){
+  test.it('requires a name for adding a food', function(){
 
     driver.get('http://localhost:8080/foods.html');
 
@@ -85,7 +88,7 @@ test.describe('testing food', function() {
     });
  })
 
-  test.xit('requires a calorie amount for adding a new food', function(){
+  test.it('requires a calorie amount for adding a new food', function(){
 
     driver.get('http://localhost:8080/foods.html');
 
@@ -101,7 +104,7 @@ test.describe('testing food', function() {
     });
   })
 
-  test.xit('clears input fields and warning messages after food is created', function(){
+  test.it('clears input fields and warning messages after food is created', function(){
 
     driver.get('http://localhost:8080/foods.html');
 
@@ -133,7 +136,7 @@ test.describe('testing food', function() {
     });
   })
 
-  test.xit('should persist foods when browser refreshes', function(){
+  test.it('should persist foods when browser refreshes', function(){
 
     driver.get('http://localhost:8080/foods.html');
 
@@ -147,8 +150,7 @@ test.describe('testing food', function() {
     });
   })
 
-  test.xit('allows me to filter foods', function(){
-//this test is still not passing
+  test.it('allows me to filter foods', function(){
     driver.get('http://localhost:8080/foods.html');
 
     var filterBar = driver.findElement({css: '#food-filter'});
@@ -170,15 +172,16 @@ test.describe('testing food', function() {
     submitButton.click();
 
     filterBar.sendKeys("pi");
+    driver.sleep(100)
 
-    driver.findElement({css: '#foods tbody tr td:nth-of-type(1)'}).getText().then(function(value){
-      assert.equal(value, 'pizza');
+    driver.findElement({id: 'foods'}).getText().then(function(value){
+      assert.include(value, 'pizza');
+      assert.notInclude(value, 'taco');
     });
   });
 
   test.xit('allows me to edit a food after pressing enter', function(){
-    //this test is still not passing
-
+//can't get this to pass
     driver.get('http://localhost:8080/foods.html');
 
     var foodName = driver.findElement({id: 'food-name'});
@@ -188,13 +191,13 @@ test.describe('testing food', function() {
     foodName.sendKeys('pizza');
     foodCalories.sendKeys('500');
     submitButton.click();
-
-    var newName = driver.findElement({css: '#food-table tbody tr td:nth-of-type(1)'});
-    newName.click();
+    var newName = driver.findElement({css: '#foods  tr:first-child td'});
+    driver.executeScript("$('#foods  tr:first-child td').dblclick()");
     newName.sendKeys('tacos');
+    driver.findElement({id: 'foods'}).click();
 
-    driver.findElement({css: '#food-table tbody tr td:nth-of-type(1)'}).getText().then(function(event){
-      assert.equal(event, 'tacos');
+    driver.findElement({id: 'foods'}).getText().then(function(value){
+      assert.include(value, 'tacos');
     });
   });
 
