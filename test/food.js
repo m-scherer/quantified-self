@@ -150,34 +150,4 @@ test.describe('testing food', function() {
     });
   })
 
-  test.it('allows me to filter foods', function(){
-    driver.get('http://localhost:8080/foods.html');
-
-    var filterBar = driver.findElement({css: '#food-filter'});
-
-    var foodName = driver.findElement({id: 'food-name'});
-    var foodCalories = driver.findElement({id: 'food-calories'});
-    var submitButton = driver.findElement({id: 'create-food'});
-
-    foodName.sendKeys('pizza');
-    foodCalories.sendKeys('500');
-    submitButton.click();
-
-    var foodName = driver.findElement({id: 'food-name'});
-    var foodCalories = driver.findElement({id: 'food-calories'});
-    var submitButton = driver.findElement({id: 'create-food'});
-
-    foodName.sendKeys('taco');
-    foodCalories.sendKeys('300');
-    submitButton.click();
-
-    filterBar.sendKeys("pi");
-    driver.sleep(100)
-
-    driver.findElement({id: 'foods'}).getText().then(function(value){
-      assert.include(value, 'pizza');
-      assert.notInclude(value, 'taco');
-    });
-  });
-
 });

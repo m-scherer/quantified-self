@@ -148,10 +148,6 @@ test.describe('testing exercise', function() {
     driver.executeScript("return window.localStorage.getItem('exercise-calories');").then(function(exerciseCalories){
       assert.equal(exerciseCalories, exercisesAdded);
     });
-  })
+  });
 
 });
-
-
-// filtering exercises
-// editing exercises
