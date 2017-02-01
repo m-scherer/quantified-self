@@ -2,7 +2,6 @@ var assert            = require('chai').assert;
 var webdriver         = require('selenium-webdriver');
 var test              = require('selenium-webdriver/testing');
 var DailyMeals        = require('../lib/daily-meals');
-var MockLocalStorage  = require('mock-localstorage')
 
 
 test.describe('DailyMeals testing', function() {
@@ -28,7 +27,8 @@ test.describe('DailyMeals testing', function() {
     driver.findElement({id: 'create-food'}).click();
 
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
+
 
     driver.findElement({css: 'label[for=Apple]'}).click();
     driver.findElement({id: 'breakfast-button'}).click()
@@ -47,7 +47,7 @@ test.describe('DailyMeals testing', function() {
     driver.findElement({id: 'create-food'}).click();
 
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Apple]'}).click();
     driver.findElement({id: 'breakfast-button'}).click();
@@ -70,7 +70,7 @@ test.describe('DailyMeals testing', function() {
     driver.findElement({id: 'create-food'}).click();
 
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Apple]'}).click();
     driver.findElement({id: 'lunch-button'}).click()
@@ -89,7 +89,7 @@ test.describe('DailyMeals testing', function() {
     driver.findElement({id: 'create-food'}).click();
 
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Apple]'}).click();
     driver.findElement({id: 'lunch-button'}).click();
@@ -112,7 +112,7 @@ test.describe('DailyMeals testing', function() {
     driver.findElement({id: 'create-food'}).click();
 
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Apple]'}).click();
     driver.findElement({id: 'dinner-button'}).click()
@@ -131,7 +131,7 @@ test.describe('DailyMeals testing', function() {
     driver.findElement({id: 'create-food'}).click();
 
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Apple]'}).click();
     driver.findElement({id: 'dinner-button'}).click()
@@ -156,7 +156,7 @@ test.describe('DailyMeals testing', function() {
     driver.findElement({id: 'create-food'}).click();
 
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Apple]'}).click();
     driver.findElement({id: 'snack-button'}).click()
@@ -175,7 +175,7 @@ test.describe('DailyMeals testing', function() {
     driver.findElement({id: 'create-food'}).click();
 
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Apple]'}).click();
     driver.findElement({id: 'snack-button'}).click()
@@ -199,7 +199,7 @@ test.describe('DailyMeals testing', function() {
     driver.findElement({id: 'create-exercise'}).click();
 
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Run]'}).click();
     driver.findElement({id: 'exercise-button'}).click();

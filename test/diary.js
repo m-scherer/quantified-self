@@ -27,7 +27,7 @@ test.describe('testing diary', function() {
     foodCalories.sendKeys('500');
     submitButton.click();
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=pizza]'}).click();
     driver.findElement({id: 'lunch-button'}).click()
@@ -38,7 +38,7 @@ test.describe('testing diary', function() {
   });
 
   test.it('has totals', function() {
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
     var calories = driver.findElement({id: 'calories-goal'}).getText().then(function(textValue) {
       assert.equal(textValue, 2000);
     });
@@ -55,7 +55,7 @@ test.describe('testing diary', function() {
     foodCalories.sendKeys('500');
     submitButton.click();
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=pizza]'}).click();
     driver.findElement({id: 'lunch-button'}).click()
@@ -76,7 +76,7 @@ test.describe('testing diary', function() {
     exerciseCalories.sendKeys('500');
     submitButton.click();
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Run]'}).click();
     driver.findElement({id: 'exercise-button'}).click()
@@ -97,7 +97,7 @@ test.describe('testing diary', function() {
     exerciseCalories.sendKeys('500');
     submitButton.click();
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Run]'}).click();
     driver.findElement({id: 'exercise-button'}).click()
@@ -118,7 +118,7 @@ test.describe('testing diary', function() {
     foodCalories.sendKeys('500');
     submitButton.click();
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=pizza]'}).click();
     driver.findElement({id: 'lunch-button'}).click()
@@ -139,7 +139,7 @@ test.describe('testing diary', function() {
     exerciseCalories.sendKeys('500');
     submitButton.click();
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Run]'}).click();
     driver.findElement({id: 'exercise-button'}).click()
@@ -160,7 +160,7 @@ test.describe('testing diary', function() {
     foodCalories.sendKeys('2000');
     submitButton.click();
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=pizza]'}).click();
     driver.findElement({id: 'lunch-button'}).click()
@@ -181,7 +181,7 @@ test.describe('testing diary', function() {
     foodCalories.sendKeys('2500');
     submitButton.click();
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=pizza]'}).click();
     driver.findElement({id: 'lunch-button'}).click()
@@ -192,7 +192,7 @@ test.describe('testing diary', function() {
   });
 
   test.it('can get yesterday', function() {
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({id: 'today'}).getText().then(function(today) {
       driver.findElement({id: 'yesterday'}).click();
@@ -203,7 +203,7 @@ test.describe('testing diary', function() {
   });
 
   test.it('can get tomorrow', function() {
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({id: 'today'}).getText().then(function(today) {
       driver.findElement({id: 'tomorrow'}).click();
@@ -224,7 +224,7 @@ test.describe('testing diary', function() {
     exerciseCalories.sendKeys('500');
     submitButton.click();
 
-    driver.get('http://localhost:8080/diary.html');
+    driver.get('http://localhost:8080/index.html');
 
     driver.findElement({css: 'label[for=Run]'}).click();
     driver.findElement({id: 'exercise-button'}).click();
@@ -248,7 +248,7 @@ test.describe('testing diary', function() {
       exerciseCalories.sendKeys('500');
       submitButton.click();
 
-      driver.get('http://localhost:8080/diary.html');
+      driver.get('http://localhost:8080/index.html');
 
       driver.findElement({id: 'yesterday'}).click();
       driver.findElement({css: 'label[for=Run]'}).click();
