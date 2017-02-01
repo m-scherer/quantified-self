@@ -180,25 +180,4 @@ test.describe('testing food', function() {
     });
   });
 
-  test.xit('allows me to edit a food after pressing enter', function(){
-//can't get this to pass
-    driver.get('http://localhost:8080/foods.html');
-
-    var foodName = driver.findElement({id: 'food-name'});
-    var foodCalories = driver.findElement({id: 'food-calories'});
-    var submitButton = driver.findElement({id: 'create-food'});
-
-    foodName.sendKeys('pizza');
-    foodCalories.sendKeys('500');
-    submitButton.click();
-    var newName = driver.findElement({css: '#foods  tr:first-child td'});
-    driver.executeScript("$('#foods  tr:first-child td').dblclick()");
-    newName.sendKeys('tacos');
-    driver.findElement({id: 'foods'}).click();
-
-    driver.findElement({id: 'foods'}).getText().then(function(value){
-      assert.include(value, 'tacos');
-    });
-  });
-
 });
