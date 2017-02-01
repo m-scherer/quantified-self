@@ -148,10 +148,38 @@ test.describe('testing exercise', function() {
     driver.executeScript("return window.localStorage.getItem('exercise-calories');").then(function(exerciseCalories){
       assert.equal(exerciseCalories, exercisesAdded);
     });
-  })
+  });
+
+  test.it('should filter exercises', function(){
+    driver.get('http://localhost:8080/exercises.html');
+
+    var filterBar = driver.findElement({css: '#exercise-filter'});
+
+    var exerciseName = driver.findElement({id: 'exercise-name'});
+    var exerciseCalories = driver.findElement({id: 'exercise-calories'});
+    var submitButton = driver.findElement({id: 'create-exercise'});
+
+    exerciseName.sendKeys('Run');
+    exerciseCalories.sendKeys('500');
+    submitButton.click();
+
+    var exerciseName = driver.findElement({id: 'exercise-name'});
+    var exerciseCalories = driver.findElement({id: 'exercise-calories'});
+    var submitButton = driver.findElement({id: 'create-exercise'});
+
+    exerciseName.sendKeys('Bike');
+    exerciseCalories.sendKeys('300');
+    submitButton.click();
+
+    filterBar.sendKeys("bi");
+    driver.sleep(100)
+
+    driver.findElement({id: 'exercises'}).getText().then(function(value){
+      assert.include(value, 'Bike');
+      assert.notInclude(value, 'Run');
+    });
+  });
 
 });
 
-
-// filtering exercises
 // editing exercises
