@@ -181,5 +181,3 @@ test.describe('testing exercise', function() {
   });
 
 });
-
-// editing exercises

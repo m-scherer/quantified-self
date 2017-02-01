@@ -301,6 +301,60 @@ test.describe('testing diary', function() {
     });
   });
 
-  
+  test.it('should filter diary exercises', function(){
+    driver.get('http://localhost:8080/exercises.html');
+
+    var exerciseName = driver.findElement({id: 'exercise-name'});
+    var exerciseCalories = driver.findElement({id: 'exercise-calories'});
+    var submitButton = driver.findElement({id: 'create-exercise'});
+
+    exerciseName.sendKeys('Run');
+    exerciseCalories.sendKeys('500');
+    submitButton.click();
+
+    exerciseName.sendKeys('Bike');
+    exerciseCalories.sendKeys('300');
+    submitButton.click();
+
+    driver.get('http://localhost:8080/diary.html');
+
+    var filterBar = driver.findElement({css: '#exercise-filter'});
+
+    filterBar.sendKeys("bi");
+    driver.sleep(100)
+
+    driver.findElement({id: 'exercises'}).getText().then(function(value){
+      assert.include(value, 'Bike');
+      assert.notInclude(value, 'Run');
+    });
+  });
+
+  test.it('should filter diary food', function(){
+    driver.get('http://localhost:8080/foods.html');
+
+    var foodName = driver.findElement({id: 'food-name'});
+    var foodCalories = driver.findElement({id: 'food-calories'});
+    var submitButton = driver.findElement({id: 'create-food'});
+
+    foodName.sendKeys('pizza');
+    foodCalories.sendKeys('500');
+    submitButton.click();
+
+    foodName.sendKeys('apples');
+    foodCalories.sendKeys('300');
+    submitButton.click();
+
+    driver.get('http://localhost:8080/diary.html');
+
+    var filterBar = driver.findElement({css: '#food-filter'});
+
+    filterBar.sendKeys("pi");
+    driver.sleep(100)
+
+    driver.findElement({id: 'foods'}).getText().then(function(value){
+      assert.include(value, 'pizza');
+      assert.notInclude(value, 'apples');
+    });
+  });
 
 });
