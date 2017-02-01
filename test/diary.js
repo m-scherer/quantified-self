@@ -17,10 +17,8 @@ test.describe('testing diary', function() {
   })
 
   test.xit('adds a selected food to table', function(){
-
+//cant find selector
     driver.get('http://localhost:8080/foods.html');
-    // var foodsArray = JSON.stringify([{name: 'swimming', calories: '500'}]);
-    // driver.executeScript("window.localStorage.setItem('foods-calories', '" + foodsArray + "');");
 
     var foodName = driver.findElement({id: 'food-name'});
     var foodCalories = driver.findElement({id: 'food-calories'});

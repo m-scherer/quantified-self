@@ -191,17 +191,11 @@ test.describe('testing food', function() {
 
     var newName = driver.findElement({css: '#food-table tbody tr td:nth-of-type(1)'});
     newName.click();
-    newName.clear();
-    newName.sendKeys('orange');
-    newName.sendKeys(webdriver.Key.ENTER);
+    newName.sendKeys('tacos');
 
     driver.findElement({css: '#food-table tbody tr td:nth-of-type(1)'}).getText().then(function(event){
-      assert.equal(event, 'orange');
+      assert.equal(event, 'tacos');
     });
   });
 
 });
-
-
-// filtering food
-// editing food
