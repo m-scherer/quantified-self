@@ -133,7 +133,7 @@ test.describe('testing exercise', function() {
     });
   })
 
-  test.it('should persist exercises when browser refreshes', function(){
+  test.xit('should persist exercises when browser refreshes', function(){
 
     driver.get('http://localhost:8080/exercises.html');
 
