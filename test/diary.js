@@ -249,7 +249,6 @@ test.describe('testing diary', function() {
     submitButton.click();
 
     driver.get('http://localhost:8080/index.html');
-
     driver.findElement({id: 'yesterday'}).click();
     driver.findElement({css: 'label[for=Run]'}).click();
     driver.findElement({id: 'exercise-button'}).click();
